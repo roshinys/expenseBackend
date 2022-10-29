@@ -4,7 +4,7 @@ dotenv.config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
+const path = require("path");
 const bcrypt = require("bcrypt");
 
 const app = express();
@@ -40,6 +40,11 @@ app.use("/", authRoutes);
 app.use("/", expenseRoutes);
 app.use("/purchase", purchaseRoutes);
 app.use("/", forgotpassRoutes);
+
+app.use((req, res) => {
+  // console.log(req.url);
+  res.sendFile(path.join(__dirname, `/public/${req.url}`));
+});
 
 sequelize
   .sync()
