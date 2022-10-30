@@ -43,6 +43,7 @@ app.use("/", forgotpassRoutes);
 
 app.use((req, res) => {
   const url = req.url.split("?")[0];
+  console.log("request has arrived and its complete");
   // console.log(req.url.split("?")[0]);
   res.sendFile(path.join(__dirname, `/public/${url}`));
 });
