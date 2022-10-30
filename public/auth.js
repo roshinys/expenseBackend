@@ -30,7 +30,7 @@ async function newpass(e) {
   e.preventDefault();
   const forgotemail = document.getElementById("forgotemail").value;
   // console.log("he pressed it ");
-  const result = await axios.post("http://52.66.80.65:3000/forgotpass", {
+  const result = await axios.post("http://15.206.23.193:3000/forgotpass", {
     email: forgotemail,
   });
   console.log(result);
@@ -53,7 +53,7 @@ async function addUser(e) {
     return false;
   }
   try {
-    const result = await axios.post("http://52.66.80.65:3000/postUser", {
+    const result = await axios.post("http://15.206.23.193:3000/postUser", {
       username,
       email,
       password,
@@ -64,7 +64,7 @@ async function addUser(e) {
       return;
     }
     // console.log(result.data);
-    window.location.href = "http://52.66.80.65:3000/login.html";
+    window.location.href = "http://15.206.23.193:3000/login.html";
     // window.location.href =
     //   "file:///C:/Users/roshi/Desktop/backendSharpener/expenseTracker/frontEnd/login.html";
     return;
@@ -87,14 +87,14 @@ async function getUser(e) {
     return false;
   }
   try {
-    const result = await axios.post("http://52.66.80.65:3000/getUser", {
+    const result = await axios.post("http://15.206.23.193:3000/getUser", {
       email,
       password,
     });
     // console.log(result);
     sendMessage(result.data.msg);
     localStorage.setItem("token", result.data.token);
-    window.location.href = "http://52.66.80.65:3000/register.html";
+    window.location.href = "http://15.206.23.193:3000/home.html";
     // console.log(result.data);
 
     return;

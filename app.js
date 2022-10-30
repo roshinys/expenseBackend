@@ -42,8 +42,9 @@ app.use("/purchase", purchaseRoutes);
 app.use("/", forgotpassRoutes);
 
 app.use((req, res) => {
-  // console.log(req.url);
-  res.sendFile(path.join(__dirname, `/public/${req.url}`));
+  const url = req.url.split("?")[0];
+  // console.log(req.url.split("?")[0]);
+  res.sendFile(path.join(__dirname, `/public/${url}`));
 });
 
 sequelize

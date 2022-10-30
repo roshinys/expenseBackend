@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 async function isPremUser() {
   try {
-    const result = await axios.get("http://52.66.80.65:3000/", {
+    const result = await axios.get("http://15.206.23.193:3000/", {
       headers: { Authorization: token },
     });
     // console.log(result);
@@ -35,7 +35,7 @@ async function isPremUser() {
       throw new Error("not a premium user");
     }
     document.getElementsByClassName("prem-features")[0].classList.add("active");
-    const response = await axios.get("http://52.66.80.65:3000/usersExpense", {
+    const response = await axios.get("http://15.206.23.193:3000/usersExpense", {
       headers: { Authorization: token },
     });
     // console.log(response.data);
@@ -62,7 +62,7 @@ async function isPremUser() {
 async function downloadfilefromaws() {
   try {
     const response = await axios.get(
-      "http://52.66.80.65:3000/downloadExpense",
+      "http://15.206.23.193:3000/downloadExpense",
       {
         headers: { Authorization: token },
       }
@@ -83,7 +83,7 @@ async function getSpecificUser(e) {
   const id = e.target.id;
   // console.log(id)
   const response = await axios.get(
-    `http://52.66.80.65:3000/user-expense/${id}`,
+    `http://15.206.23.193:3000/user-expense/${id}`,
     {
       headers: { Authorization: token },
     }
@@ -123,7 +123,7 @@ async function addExpense() {
     // console.log(expense, description, category);
     const token = localStorage.getItem("token");
     const result = await axios.post(
-      "http://52.66.80.65:3000/postExpense",
+      "http://15.206.23.193:3000/postExpense",
       {
         expense: expense,
         description: description,
@@ -156,7 +156,7 @@ async function getAllExpense(e) {
     // console.log("quantity is ", quantity);
     const token = localStorage.getItem("token");
     const result = await axios.get(
-      `http://52.66.80.65:3000/getExpenses?page=${page}&quantity=${quantity}`,
+      `http://15.206.23.193:3000/getExpenses?page=${page}&quantity=${quantity}`,
       {
         headers: { Authorization: token },
       }
@@ -203,7 +203,7 @@ async function changeItem(e) {
     const token = localStorage.getItem("token");
     const delId = e.target.id;
     const result = await axios.delete(
-      `http://52.66.80.65:3000/deleteExpense/${delId}`,
+      `http://15.206.23.193:3000/deleteExpense/${delId}`,
       {
         headers: { Authorization: token },
       }
@@ -256,7 +256,7 @@ document.getElementById("rzrpaybtn").addEventListener("click", rzyPayment);
 
 async function rzyPayment(e) {
   const response = await axios.get(
-    "http://52.66.80.65:3000/purchase/premiummembership",
+    "http://15.206.23.193:3000/purchase/premiummembership",
     {
       headers: { Authorization: token },
     }
@@ -279,7 +279,7 @@ async function rzyPayment(e) {
       console.log(response);
       axios
         .post(
-          "http://52.66.80.65:3000/purchase/updatetransactionstatus",
+          "http://15.206.23.193:3000/purchase/updatetransactionstatus",
           {
             order_id: options.order_id,
             payment_id: response.razorpay_payment_id,

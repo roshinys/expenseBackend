@@ -39,7 +39,7 @@ exports.forgotpass = async (req, res) => {
     });
     res
       .status(200)
-      .json({ msg: true, link: `http://localhost:3000/resetPass/${id}` });
+      .json({ msg: true, link: `http://15.206.23.193:3000/resetPass/${id}` });
   } catch (err) {
     console.log(err);
     res.status(404).json({ msg: false });
